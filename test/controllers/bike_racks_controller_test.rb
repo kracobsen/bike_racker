@@ -6,6 +6,6 @@ class BikeRacksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     json_response = JSON.parse(response.body)
-    assert json_response.count == 2
+    assert json_response.count == 262
   end
 end
