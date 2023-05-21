@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "bike_racks#index"
+  resources :bike_racks, only: [:index]
+
 end
