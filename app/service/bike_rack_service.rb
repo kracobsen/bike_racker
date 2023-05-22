@@ -1,4 +1,8 @@
 class BikeRackService
+  def initialize
+    @conn = get_connection
+  end
+
   def get_all_bike_racks
     bike_racks = get_bike_rack_list
     if bike_racks
@@ -9,8 +13,12 @@ class BikeRackService
   end
 
   def get_bike_rack_list
-    station_information = get_station_information
-    station_status = get_station_status
+    begin
+      station_information = get_station_information
+      station_status = get_station_status
+    rescue Faraday::ConnectionFailed
+      nil
+    end
     if station_information && station_status
       merge_information_and_status(station_information, station_status)
     end
@@ -26,7 +34,7 @@ class BikeRackService
   end
 
   def get_station_information
-    response = Faraday.get("https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json")
+    response = @conn.get("station_information.json")
     if response.success?
       return JSON.parse(response.body)["data"]["stations"]
     end
@@ -34,11 +42,19 @@ class BikeRackService
   end
 
   def get_station_status
-    response = Faraday.get("https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json")
+    response = @conn.get("station_status.json")
     if response.success?
       return JSON.parse(response.body)["data"]["stations"]
     end
     nil
+  end
+
+  def get_connection
+    puts "Getting connection"
+    Faraday.new(
+      url: "https://gbfs.urbansharing.com/oslobysykkel.no",
+      headers: {"Accept" => "application/json"}
+    )
   end
 
   class Result
