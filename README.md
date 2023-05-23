@@ -1,5 +1,8 @@
 # Bike Racker
 Gets information about stations and corresponding number of locks and bikes at those stations as JSON
+## Notes
+- Bysykkel does not have any defined failure states for the API, so we assume all other status codes than 200 to be failures and return a generic 500 response for all errors
+- This repo contains a bunch of boilerplate code from Ruby On Rails, for those not familiar with the structure, the most relevant code for the assignment is contained in [this pull request](https://github.com/kracobsen/bike_racker/pull/1)
 
 ## Running the application
 Using docker compose:
@@ -10,7 +13,9 @@ Using Ruby(requires Ruby 3.2.1 installed)
 
 `
 bundle install
+`
 
+`
 bin/dev
 `
 
