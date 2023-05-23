@@ -12,6 +12,33 @@ class BikeRackService
     Result.new(false, nil, "Something went wrong")
   end
 
+  def search_bike_racks(search_term)
+    bike_racks = get_bike_rack_list
+    if bike_racks
+      return Result.new(true, bike_racks.select { |b| b.name.downcase.include?(search_term.downcase) }, nil)
+    end
+
+    Result.new(false, nil, "Something went wrong")
+  end
+
+  def get_bikes_available_bike_racks
+    bike_racks = get_bike_rack_list
+    if bike_racks
+      return Result.new(true, bike_racks.select { |b| b.available_bikes > 0 }, nil)
+    end
+
+    Result.new(false, nil, "Something went wrong")
+  end
+
+  def get_locks_available_bike_racks
+    bike_racks = get_bike_rack_list
+    if bike_racks
+      return Result.new(true, bike_racks.select { |b| b.available_locks > 0 }, nil)
+    end
+
+    Result.new(false, nil, "Something went wrong")
+  end
+
   def get_bike_rack_list
     begin
       station_information = get_station_information
@@ -30,7 +57,7 @@ class BikeRackService
       bike_rack_list[stat["station_id"]].available_bikes = stat["num_bikes_available"].to_i
       bike_rack_list[stat["station_id"]].available_locks = stat["num_docks_available"].to_i
     end
-    bike_rack_list
+    bike_rack_list.values
   end
 
   def get_station_information

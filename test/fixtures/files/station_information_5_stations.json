@@ -36,8 +36,8 @@
       },
       {  
         "station_id":"5",
-        "name":"Nordstrand Stasjon",
-        "address":"Nordstrand Stasjon",
+        "name":"Nordstrand Trikkestopp",
+        "address":"Nordstrand Trikkestopp",
         "lat":59.9226729,
         "lon":10.6788129,
         "capacity":25
