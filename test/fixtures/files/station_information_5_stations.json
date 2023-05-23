@@ -1,0 +1,47 @@
+{
+  "last_updated": 1553592653,
+  "data": {
+    "stations": [
+      {  
+        "station_id":"1",
+        "name":"Skøyen Stasjon",
+        "address":"Skøyen Stasjon",
+        "lat":59.9226729,
+        "lon":10.6788129,
+        "capacity":20
+      },
+      {  
+        "station_id":"2",
+        "name":"Bryn Stasjon",
+        "address":"Bryn Stasjon",
+        "lat":59.9226729,
+        "lon":10.6788129,
+        "capacity":10
+      },
+      {  
+        "station_id":"3",
+        "name":"Oslo Stasjon",
+        "address":"Oslo Stasjon",
+        "lat":59.9226729,
+        "lon":10.6788129,
+        "capacity":15
+      },
+      {  
+        "station_id":"4",
+        "name":"Lysaker Stasjon",
+        "address":"Lysaker Stasjon",
+        "lat":59.9226729,
+        "lon":10.6788129,
+        "capacity":20
+      },
+      {  
+        "station_id":"5",
+        "name":"Nordstrand Trikkestopp",
+        "address":"Nordstrand Trikkestopp",
+        "lat":59.9226729,
+        "lon":10.6788129,
+        "capacity":25
+      }
+    ]
+  }
+}
